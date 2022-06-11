@@ -1,0 +1,16 @@
+Detalhes de implementacao
+    O primeiro indice eh o valor mais recente
+
+
+Tarefas para fazer funcionar:
+
+[ ] Configurar o "gerar saida"
+    [ ] implementar a o calculo da tendencia como primeiro sendo mais recente
+    [X] implementar a o calculo da media movel no periodo
+    [X] implementar a funcao que torna arrays de tamanhos distintos em mesmo tamanho completando com 'None' 
+
+Tarefas Extras:
+
+[ ] Tirar o loop de "wait_valid_option" e implementar em main
+
+[ ] Ordenar os dados de entrada
