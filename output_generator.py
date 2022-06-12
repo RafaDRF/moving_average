@@ -1,30 +1,32 @@
 from numpy import sign
 
-def get_diference_sign(short, long):
-    diference = []
-    
-    for i in range(0,len(long)):
-        if short[i] == None or long[i] == None:
-            diference.append(None)
-            continue
-        
-        item_diference =  short[i] - long[i]
-        diference_sign = sign(item_diference)
-        diference.append(diference_sign)
-    
-    return diference
 
-def trend(diference):
+def get_difference_sign(short, long):
+    difference = []
+
+    for i in range(0, len(long)):
+        if short[i] is None or long[i] is None:
+            difference.append(None)
+            continue
+
+        item_difference = short[i] - long[i]
+        difference_sign = sign(item_difference)
+        difference.append(difference_sign)
+
+    return difference
+
+
+def trend(difference):
     trend_list = []
-    
-    for i in range(1,len(diference)):
-        
-        if diference[i] == None or diference[i-1] == None:
+
+    for i in range(1, len(difference)):
+
+        if difference[i] == None or difference[i - 1] == None:
             trend_list.append(None)
             continue
 
-        last_sign = sign(diference[i])
-        actual_sign = sign(diference[i-1])
+        last_sign = sign(difference[i])
+        actual_sign = sign(difference[i - 1])
 
         same_sign = last_sign == actual_sign
 
@@ -39,27 +41,28 @@ def trend(diference):
     return trend_list
 
 
-def moving_avrage(price, day):
-   
+def moving_average(price, day):
     if day <= 0 or day > len(price):
         return None
 
     total = 0
 
-    for i in range(0,day):
+    for i in range(0, day):
         total += price[i]
-    
-    value = total/day
-    
+
+    value = total / day
+
     return value
 
-def avrage_in_period(price_value, avrage_day):
-    avrage_calculated = []
+
+def average_in_period(price_value, average_day):
+    average_calculated = []
     for i in range(len(price_value)):
-        avrage_item = moving_avrage(price_value[i:], avrage_day)
-        avrage_calculated.append(avrage_item)
-    
-    return avrage_calculated
+        average_item = moving_average(price_value[i:], average_day)
+        average_calculated.append(average_item)
+
+    return average_calculated
+
 
 def make_same_size(long_list, short_list):
     size_short = len(short_list)
@@ -71,8 +74,3 @@ def make_same_size(long_list, short_list):
         short_list.insert(0, None)
 
     return short_list
-
-
-
-
-

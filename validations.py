@@ -53,7 +53,7 @@ def wait_valid_option(menu_to_print):
             valid_range = print_price_menu()
 
         elif menu_to_print == 'avrage':
-            valid_range = print_avrage_menu()
+            valid_range = print_average_menu()
 
         option = input() 
         
@@ -82,9 +82,9 @@ def input_valid_price():
 
 def input_valid_avrage(type_avrage):
     if type_avrage == 'short':
-        print_short_avrage()
+        print_short_average()
     else:
-        print_long_avrage()
+        print_long_average()
 
     try:
         avrage = int(input())

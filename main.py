@@ -1,7 +1,7 @@
 from validations import *
 
 
-### ------------------------- MENUS ------------------------ ###
+# ------------------------- MENUS ------------------------ #
 
 def price_menu(value, first):
     if int(value) == 0:
@@ -15,7 +15,7 @@ def price_menu(value, first):
         return item_day, item_price
 
     elif int(value) == 2:
-        ##id = price_remove_item()
+        # id = price_remove_item()
         # id = 0
         # print_price_items()
         return id, None
@@ -57,7 +57,7 @@ while True:
         while True:
             item_day, item_price = price_menu(price_option, first)
 
-            if item_day == None or item_price == None:
+            if item_day is None or item_price is None:
                 break
 
             price_day.append(item_day)

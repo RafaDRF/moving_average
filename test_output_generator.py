@@ -8,11 +8,11 @@ def test_avrage_in_period():
     short_avrage_day = 3
     long_avrage_day = 5
 
-    short = avrage_in_period(price_value, short_avrage_day)
+    short = average_in_period(price_value, short_avrage_day)
 
     print(short)
 
-    long = avrage_in_period(price_value, long_avrage_day)
+    long = average_in_period(price_value, long_avrage_day)
 
     print(long)
 
@@ -30,7 +30,7 @@ def test_get_diference_sign():
     print(mm3)
     print(mm5)
  
-    print(get_diference_sign(mm3, mm5))
+    print(get_difference_sign(mm3, mm5))
 
 test_get_diference_sign()
 
