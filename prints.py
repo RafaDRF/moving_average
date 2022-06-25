@@ -1,34 +1,34 @@
-def print_start_menu():
-    menu_range = 4
+def start_menu():
+    menu_items = ['1', '2', '3', '0']
     menu_message = """
         Bem vindo(a)!
         Escolha uma acao:
 
-        [1] Cadastrar nova serie
+        [1] Gerenciar Serie
         [2] Gerenciar Medias Moveis
         [3] Gerar Saida
 
         [0] Sair do Programa
         """
     print(menu_message)
-    return menu_range
+    return menu_items
 
 
-def print_price_menu():
-    menu_range = 4
+def price_menu():
+    menu_items = ['1', '2', '3', '0']
     menu_message = """
         [1] Adicionar itens
-        [2] Remover item 
-        [3] Ler Arquivo
+        [2] Mostrar Serie atual 
+        [3] Excluir item
 
         [0] Voltar para Menu 
     """
     print(menu_message)
-    return menu_range
+    return menu_items
 
 
-def print_average_menu():
-    menu_range = 3
+def average_menu():
+    menu_items = ['1', '2', '0']
     menu_message = """
         Escolha uma media para detetminar:
 
@@ -38,10 +38,10 @@ def print_average_menu():
         [0] Voltar para Menu
     """
     print(menu_message)
-    return menu_range
+    return menu_items
 
 
-def print_price_items(days, prices):
+def price_items(days, prices):
 
     current_price_head = """
         Valores atuais da serie:
@@ -55,7 +55,7 @@ def print_price_items(days, prices):
             print(current_price_item)
 
 
-def print_price_message():
+def price_message():
     message = "Digite o dia e o preco saparados por espaco"
     exemple = """
     Exemplo:
@@ -65,17 +65,17 @@ def print_price_message():
     print(exemple)
 
 
-def print_short_average():
+def short_average():
     short_average = "Digite o valor da Media Movel Curta: "
     print(short_average)
 
 
-def print_long_average():
+def long_average():
     long_average = "Digite o valor da Media Movel Longa: "
     print(long_average)
 
 
-def print_results(day, price, short, long, trend):
+def results(day, price, short, long, trend):
 
     empty_average = ' -/- '
     empty_trend = '   -/-   '

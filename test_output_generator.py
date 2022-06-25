@@ -1,5 +1,5 @@
+import output_generator
 
-from output_generator import *
 
 def test_avrage_in_period():
 
@@ -8,19 +8,21 @@ def test_avrage_in_period():
     short_avrage_day = 3
     long_avrage_day = 5
 
-    short = average_in_period(price_value, short_avrage_day)
+    short = output_generator.average_in_period(price_value, short_avrage_day)
 
     print(short)
 
-    long = average_in_period(price_value, long_avrage_day)
+    long = output_generator.average_in_period(price_value, long_avrage_day)
 
     print(long)
+
 
 def test_trend():
     
     d = [0.0, 0.0, 0.0, 1.0, 1.0, 1.0, -1.0, -1.0, None, None]
     print(d)
-    print(trend(d))
+    print(output_generator.trend(d))
+
 
 def test_get_diference_sign():
 
@@ -30,8 +32,27 @@ def test_get_diference_sign():
     print(mm3)
     print(mm5)
  
-    print(get_difference_sign(mm3, mm5))
+    print(output_generator.get_difference_sign(mm3, mm5))
 
-test_get_diference_sign()
+
+def test_moving_average():
+    price = [1, 2, 3, 2, 1, 1, 2, 3]
+    price = price[::-1]
+    print(output_generator.moving_average(price, 3))
+
+    short = output_generator.average_in_period(price, 3)
+    long = output_generator.average_in_period(price, 5)
+
+    print(short)
+    print(long)
+
+    d = output_generator.get_difference_sign(short, long)
+    print(d)
+
+    print(output_generator.trend(d))
+
+
+if __name__ == "__main__":
+    test_moving_average()
 
 

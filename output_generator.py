@@ -21,7 +21,7 @@ def trend(difference):
 
     for i in range(1, len(difference)):
 
-        if difference[i] == None or difference[i - 1] == None:
+        if difference[i] is None or difference[i - 1] is None:
             trend_list.append(None)
             continue
 
@@ -74,3 +74,4 @@ def make_same_size(long_list, short_list):
         short_list.insert(0, None)
 
     return short_list
+

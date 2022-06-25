@@ -12,4 +12,4 @@ def test_print_out():
 
     trend = [None, '  Alta  ', '  Baixa  ', 'Constante']
 
-    print_results(day, price, av_short, av_long, trend)
+    results(day, price, av_short, av_long, trend)

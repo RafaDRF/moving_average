@@ -1,88 +1,105 @@
-from validations import *
+import prints
+import output_generator
+
+input_values = []
+
+sort_average = 1
+long_average = 1
+
+MAX_INVALID_VALUES = 10
 
 
-# ------------------------- MENUS ------------------------ #
+def main():
+    global sort_average, long_average
 
-def price_menu(value, first):
-    if int(value) == 0:
-        return None, None
+    menu_start_valid_options = prints.start_menu()
 
-    if int(value) == 1:
-        if first:
-            print_price_message()
+    for i in range(MAX_INVALID_VALUES):
 
-        item_day, item_price = input_valid_price()
-        return item_day, item_price
+        option_chosen = input()
 
-    elif int(value) == 2:
-        # id = price_remove_item()
-        # id = 0
-        # print_price_items()
-        return id, None
-    else:
-        return None, None
+        if option_chosen in menu_start_valid_options:
+
+            if option_chosen == menu_start_valid_options[0]:
+
+                menu_price_valid_options = prints.price_menu()
+
+                for _ in range(MAX_INVALID_VALUES):
+
+                    option_chosen = input()
+
+                    if option_chosen in menu_price_valid_options:
+                        if option_chosen == menu_price_valid_options[0]:
+                            if input_values:
+                                input_values.insert(0, input())
+                            else:
+                                input_values.append(input())
+                            return main()
+
+                        elif option_chosen == menu_price_valid_options[1]:
+                            print(input_values)
+                            return main()
+
+                        elif option_chosen == menu_price_valid_options[2]:
+                            input_values.pop(int(input()))
+                            return main()
+
+                        else:
+                            return main()
+
+                    print(f"Valor invalido")
+
+            elif option_chosen == menu_start_valid_options[1]:
+
+                menu_average_valid_options = prints.average_menu()
+
+                for _ in range(MAX_INVALID_VALUES):
+
+                    option_chosen = input()
+
+                    if option_chosen in menu_average_valid_options:
+                        if option_chosen == menu_average_valid_options[0]:
+                            sort_average = int(input("Digite o valor da media curta: "))
+                            return main()
+
+                        elif option_chosen == menu_average_valid_options[1]:
+                            long_average = int(input("Digite o valor da media longa: "))
+                            return main()
+                        else:
+                            return main()
+
+                    print(f"Valor invalido")
+
+            elif option_chosen == menu_start_valid_options[2]:
+                data_values = [float(x) for x in input_values]
+
+                data_short = output_generator.average_in_period(data_values, sort_average)
+                data_long = output_generator.average_in_period(data_values, long_average)
+
+                difference = output_generator.get_difference_sign(data_short, data_long)
+
+                trend = output_generator.trend(difference)
+
+                print(data_values)
+                print(data_short)
+                print(data_long)
+                print(trend)
+
+                return main()
+
+            else:
+                return True
+
+        print(f"Valor invalido")
+
+        last_try = i == MAX_INVALID_VALUES - 1
+
+        if not last_try:
+            print(f"ainda restam {MAX_INVALID_VALUES-i-1} tentativas")
+        else:
+            print("Limite maximo de tentativas falhas alcancado")
+    return True
 
 
-def average_menu(value):
-    if int(value) == 1:
-        short_average = input_valid_avrage('short')
-        return short_average, None
-
-    elif int(value) == 2:
-        long_average = input_valid_avrage('long')
-        return None, long_average
-
-    else:
-        return None, None
-
-
-price_day = []
-price_value = []
-
-short_average_day = None
-short_average_calculated = []
-
-long_average_day = None
-long_average_calculated = []
-
-trend_calculated = []
-
-while True:
-    start_option = wait_valid_option('start')
-
-    if int(start_option) == 1:
-        price_option = wait_valid_option('price')
-
-        first = True
-        while True:
-            item_day, item_price = price_menu(price_option, first)
-
-            if item_day is None or item_price is None:
-                break
-
-            price_day.append(item_day)
-            price_value.append(item_price)
-
-            first = False
-
-        print_price_items(price_day, price_value)
-
-    elif int(start_option) == 2:
-        while True:
-            average_option = wait_valid_option('average')
-            short, long = average_menu(average_option)
-            if short is not None:
-                short_average_day = int(short)
-
-            if long is not None:
-                long_average = int(long)
-
-            if short is None and long is None:
-                break
-
-    elif int(start_option) == 3:
-
-        print("saida")
-
-    else:
-        break
+if __name__ == "__main__":
+    main()
